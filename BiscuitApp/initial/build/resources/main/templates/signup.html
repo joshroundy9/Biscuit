@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Sign Up</title>
+        
+        <link rel="stylesheet" href="/css/basic.css"
+        th:href="@{/css/login.css}" media="screen" type="text/css"></link>
+    </head>
+    <body>
+        <div id = "biscuitbar">
+            <a id="biscuittext" th:href="@{/home}">Biscuit</a>
+        </div>
+        <div class="below-nav">
+
+            <div id = "signinbox">
+
+                <div id="signintext">Sign Up</div>
+
+                <form th:action="@{/signup}" method="post">
+                    <div><input id="usernamebox" type="text" name="username" placeholder="Username"/> </div>
+                    <div><input id="emailbox" type="text" name="email" placeholder="Email Address"/> </div>
+                    <div><input id="passwordbox" type="password" name="password" placeholder="Password"/></div>
+                    <div><input id="confirmpasswordbox" type="password" name="confirmpassword" placeholder="Confirm Password"/></div>
+                    <div id="buttondiv"><input id="signupbutton" type="submit" value="Sign Up"/></div>
+                </form>
+
+                <div id="usernametaken" th:if="${param.error}">
+                    Username already in use.
+                </div>
+                <div id="loggedout" th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+
+                <div id="prompt">
+                    Not signed up? <a class = "registerprompt" th:href="@{/signup}">Register</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
