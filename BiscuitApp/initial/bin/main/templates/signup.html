@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Sign In</title>
+        <title>Sign Up</title>
         
         <link rel="stylesheet" href="/css/basic.css"
         th:href="@{/css/login.css}" media="screen" type="text/css"></link>
@@ -14,16 +14,18 @@
 
             <div id = "signinbox">
 
-                <div id="signintext">Sign In</div>
+                <div id="signintext">Sign Up</div>
 
-                <form th:action="@{/login}" method="post">
+                <form th:action="@{/signup}" method="post">
                     <div><input id="usernamebox" type="text" name="username" placeholder="Username"/> </div>
+                    <div><input id="emailbox" type="text" name="email" placeholder="Email Address"/> </div>
                     <div><input id="passwordbox" type="password" name="password" placeholder="Password"/></div>
-                    <div id="buttondiv"><input id="signinbutton" type="submit" value="Sign In"/></div>
+                    <div><input id="confirmpasswordbox" type="password" name="confirmpassword" placeholder="Confirm Password"/></div>
+                    <div id="buttondiv"><input id="signupbutton" type="submit" value="Sign Up"/></div>
                 </form>
 
-                <div id="invalid" th:if="${param.error}">
-                    Invalid username and password.
+                <div id="usernametaken" th:if="${param.error}">
+                    Username already in use.
                 </div>
                 <div id="loggedout" th:if="${param.logout}">
                     You have been logged out.

@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Spring Security Example </title>
+        <title>Sign In</title>
         
-        <link rel="stylesheet" href="/css/style.css"
-        th:href="@{/css/basic.css}" media="screen" type="text/css"></link>
+        <link rel="stylesheet" href="/css/basic.css"
+        th:href="@{/css/login.css}" media="screen" type="text/css"></link>
     </head>
     <body>
-        <div class = "nav-bar">
-            <a class="home-link" th:href="@{/home}">Biscuit</a>
+        <div id = "biscuitbar">
+            <a id="biscuittext" th:href="@{/home}">Biscuit</a>
         </div>
         <div class="below-nav">
-            <div th:if="${param.error}">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}">
-                You have been logged out.
-            </div>
-            <div class = "container">
+
+            <div id = "signinbox">
+
+                <div id="signintext">Sign In</div>
+
                 <form th:action="@{/login}" method="post">
-                    <div><input type="text" name="username" placeholder="Username"/> </div>
-                    <div><input type="password" name="password" placeholder="Password"/></div>
-                    <div><input type="submit" value="Sign In"/></div>
+                    <div><input id="usernamebox" type="text" name="username" placeholder="Username"/> </div>
+                    <div><input id="passwordbox" type="password" name="password" placeholder="Password"/></div>
+                    <div id="buttondiv"><input id="signinbutton" type="submit" value="Sign In"/></div>
                 </form>
+
+                <div id="invalid" th:if="${param.error}">
+                    Invalid username and password.
+                </div>
+                <div id="loggedout" th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+
+                <div id="prompt">
+                    Not signed up? <a class = "registerprompt" th:href="@{/signup}">Register</a>
+                </div>
             </div>
         </div>
     </body>
